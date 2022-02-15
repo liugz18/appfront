@@ -16,12 +16,11 @@
 
 
 <script>
-import MainPageAside from './MainPageAside.vue'
+import MainPageAside from '../components/MainPageAside.vue'
 export default {
   components: { MainPageAside },
-  name: 'HelloWorld',
+  name: 'MainPage',
   props: {
-    msg: String
   }
 }
 </script>

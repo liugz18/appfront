@@ -1,0 +1,103 @@
+<template>
+    <el-row class="tac">
+        <el-col :span="18">
+            <h5>Runs</h5>
+            <el-menu
+            default-active="2"
+            class="el-menu-vertical-demo"
+            @open="handleOpen"
+            @close="handleClose"
+            >
+                <el-sub-menu v-for="item in isSweep" :index="item.path" :key="item.path">
+                    <template #title>
+                    <i :class=" 'el-icon-' + item.name "></i>
+                    <span>{{item.label}}</span>
+                    </template>
+
+                    <router-link to="/RunPage">
+                        <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path">
+                        <i :class=" 'el-icon-' + child.name "></i>
+                        <span>{{child.label}}</span>
+                        </el-menu-item>
+                    </router-link>
+                </el-sub-menu>
+
+                <router-link to="/RunPage">
+                    <el-menu-item v-for="item in notSweep" :index="item.path" :key="item.path">
+                        <i :class=" 'el-icon-' + item.name "></i>
+                        <span>{{item.label}}</span>
+                    </el-menu-item>
+                </router-link>
+
+                <el-menu-item :index="plus">
+                    <i :class="plus"></i>
+                    <span>+</span>
+                </el-menu-item>
+            </el-menu>
+        </el-col>
+    
+    </el-row> 
+</template>
+
+<script>
+  export default {
+    data() {
+        return {
+            isCollapse: false,
+            menu: [
+                {
+                    path: 'runs/run1',
+                    name: 'run1',
+                    label: 'run1',
+                    url: 'runs/run1'
+                },
+                {
+                    path: 'runs/run2',
+                    name: 'run2',
+                    label: 'run2',
+                    url: 'runs/run2'
+                },
+                {
+                    path: 'runs/run3',
+                    name: 'run3',
+                    label: 'run3',
+                    url: 'runs/run3'
+                },
+                {
+                    label: 'sweep1',
+                    children: [
+                        {
+                            path: 'sweep1/sweep1-1',
+                            name: 'sweep1-1',
+                            label: 'sweep1-1',
+                            url: 'sweep1/sweep1-1'
+                        },
+                        {
+                            path: 'sweep1/sweep1-2',
+                            name: 'sweep1-2',
+                            label: 'sweep1-2',
+                            url: 'sweep1/sweep1-2'
+                        },
+                    ]
+                },
+            ]
+        }
+    },
+    methods: {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath)
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath)
+      },
+    },
+    computed: {
+        notSweep() {
+            return this.menu.filter(item => !item.children)
+        },
+        isSweep() {
+            return this.menu.filter(item => item.children)
+        }
+    }
+  }
+</script>
