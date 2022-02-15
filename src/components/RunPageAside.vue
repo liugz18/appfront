@@ -12,7 +12,9 @@
             <el-tab-pane label="Info">
                 <run-page-info></run-page-info>
             </el-tab-pane>
-            <el-tab-pane label="Graphs">Graphs</el-tab-pane>
+            <el-tab-pane label="Graphs">
+                <run-page-graphs></run-page-graphs>
+            </el-tab-pane>
             <el-tab-pane label="Videos">
                 <run-page-videos></run-page-videos>
             </el-tab-pane>
@@ -29,12 +31,13 @@ import { Back } from '@element-plus/icons'
 import RunPageLogs from './RunPageLogs.vue'
 import RunPageInfo from './RunPageInfo.vue'
 import RunPageVideos from './RunPageVideos.vue'
+import RunPageGraphs from './RunPageGraphs.vue'
   export default {
     data() {
       return {
         tabPosition: 'left',
       }
     },
-    components: {Back, RunPageLogs, RunPageInfo, RunPageVideos}
+    components: {Back, RunPageLogs, RunPageInfo, RunPageVideos, RunPageGraphs}
   }
 </script>

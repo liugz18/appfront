@@ -9,7 +9,9 @@
     <el-aside width="200px">
       <main-page-aside></main-page-aside>
     </el-aside>
-    <el-main>Main</el-main>
+    <el-main>
+        <main-page-main></main-page-main>
+    </el-main>
   </el-container>
 </el-container>
 </template> 
@@ -17,8 +19,9 @@
 
 <script>
 import MainPageAside from '../components/MainPageAside.vue'
+import MainPageMain from '../components/MainPageMain.vue'
 export default {
-  components: { MainPageAside },
+  components: { MainPageAside, MainPageMain },
   name: 'MainPage',
   props: {
   }
