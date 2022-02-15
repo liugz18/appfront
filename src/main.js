@@ -3,8 +3,10 @@ import  ElementUI from 'element-plus'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from '../router'
-// import { ElIcon } from 'element-plus'
+import VideoPlayer from 'vue-video-player/src'
 
+import 'vue-video-player/src/custom-theme.css'
+import 'video.js/dist/video-js.css'
 const app = createApp(App)
 
 // app.use(ElContainer)
@@ -12,5 +14,5 @@ const app = createApp(App)
 // app.use(ElHeader)
 app.use(ElementUI)
 app.use(router)
-// app.use(ElIcon)
+app.use(VideoPlayer)
 app.mount('#app')
