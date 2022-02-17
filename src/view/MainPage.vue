@@ -3,8 +3,8 @@
     <h1>{{ msg }}</h1>
     <el-checkbox>!!{{ msg }}</el-checkbox>
   </div -->
- <el-container>
-  <el-header>Header</el-header>
+ <el-container height="100%">
+  <el-header height="40px">Header</el-header>
   <el-container>
     <el-aside width="200px">
       <main-page-aside></main-page-aside>
@@ -44,4 +44,10 @@ li {
 a {
   color: #42b983;
 }
+.el-container {
+        height: 100%;
+    }
+.el-aside {
+        background-color: #545c64;
+    }
 </style>

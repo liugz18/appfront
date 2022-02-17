@@ -1,13 +1,16 @@
 <template>
-    <el-row class="tac">
-        <el-col :span="18">
-            <h5>Runs</h5>
+    <!-- <el-row class="tac">
+        <el-col :span="18"> -->
             <el-menu
             default-active="2"
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b"
             >
+                <h3>Runs</h3>
                 <el-sub-menu v-for="item in isSweep" :index="item.path" :key="item.path">
                     <template #title>
                     <i :class=" 'el-icon-' + item.name "></i>
@@ -34,9 +37,9 @@
                     <span>+</span>
                 </el-menu-item>
             </el-menu>
-        </el-col>
+        <!-- </el-col>
     
-    </el-row> 
+    </el-row>  -->
 </template>
 
 <script>
@@ -101,3 +104,13 @@
     }
   }
 </script>
+
+<style scoped>
+    .h3 {
+      color :"#fff";  
+    }
+    .el-menu {
+      height :"100vh"
+    }
+
+</style>
