@@ -34,4 +34,14 @@ li {
 a {
   color: #42b983;
 }
+.el-header {
+        height: 40px;
+        background-color: #000;
+    }
+.el-container {
+        height: 100%;
+    }
+.el-aside {
+        background-color: #545c64;
+    }
 </style>

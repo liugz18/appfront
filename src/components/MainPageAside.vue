@@ -110,7 +110,7 @@
       color :"#fff";  
     }
     .el-menu {
-      height :"100vh"
+      width :"100%"
     }
 
 </style>
