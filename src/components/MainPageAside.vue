@@ -9,6 +9,7 @@
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b"
+            el-menu-border-color="#545c64"
             >
                 <h3>Runs</h3>
                 <el-sub-menu v-for="item in isSweep" :index="item.path" :key="item.path">
@@ -32,20 +33,24 @@
                     </el-menu-item>
                 </router-link>
 
-                <el-menu-item :index="plus">
+                <el-menu-item :index="plus" @click="drawer = true">
                     <i :class="plus"></i>
-                    <span>+</span>
+                    <span>New Run +</span>
                 </el-menu-item>
             </el-menu>
         <!-- </el-col>
     
     </el-row>  -->
+    <new-run-drawer v-model="drawer"></new-run-drawer>
 </template>
 
 <script>
+import NewRunDrawer from './NewRunDrawer.vue'
   export default {
+    components: {NewRunDrawer},
     data() {
         return {
+            drawer : false,
             isCollapse: false,
             menu: [
                 {
@@ -83,7 +88,7 @@
                         },
                     ]
                 },
-            ]
+            ],
         }
     },
     methods: {
@@ -101,7 +106,7 @@
         isSweep() {
             return this.menu.filter(item => item.children)
         }
-    }
+    },
   }
 </script>
 
@@ -109,8 +114,9 @@
     .h3 {
       color :"#fff";  
     }
-    .el-menu {
-      width :"100%"
+    .el-menu-vertical-demo {
+      width :"100%";
+      border-style: "none"
     }
 
 </style>
