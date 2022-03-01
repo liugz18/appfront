@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from '../router'
 import VideoPlayer from 'vue-video-player/src'
 
+
 import 'vue-video-player/src/custom-theme.css'
 import 'video.js/dist/video-js.css'
 const app = createApp(App)

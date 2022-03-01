@@ -9,7 +9,7 @@
     <el-row v-for="(img, idx) in imgs" :gutter="20" :key="idx">
       <el-col :span="20">
         <el-card shadow="hover">
-          <img :src="img.imgUrl" />
+          <img :src="'http://127.0.0.1:8000'+img.imgpath" />
         </el-card>
       </el-col>
     </el-row>
@@ -21,19 +21,25 @@
 
 
 <script>
+import axios from 'axios'
 export default {
   name: "MainPageMain",
   data() {
     return {
-      imgs: [
-        { imgUrl: require("../assets/plot-AR.png") },
-        { imgUrl: require("../assets/plot-S.png") },
-        { imgUrl: require("../assets/FRED_Quick_Start_figure4.png") },
-        { imgUrl: require("../assets/FRED_Quick_Start_figure5.png") },
-        { imgUrl: require("../assets/FRED_Quick_Start_figure6.png") },
-        { imgUrl: require("../assets/FRED_Quick_Start_figure7.png") },
-      ],
+      // imgs: [
+      //   { imgUrl: "http://127.0.0.1:8000/media/plot-ARs.png" },
+      //   { imgUrl: require("../assets/plot-AR.png") },
+      //   { imgUrl: require("../assets/plot-S.png") },
+      //   { imgUrl: require("../assets/FRED_Quick_Start_figure4.png") },
+      //   { imgUrl: require("../assets/FRED_Quick_Start_figure5.png") },
+      //   { imgUrl: require("../assets/FRED_Quick_Start_figure6.png") },
+      //   { imgUrl: require("../assets/FRED_Quick_Start_figure7.png") },
+      // ],
+      imgs: []
     };
+  },
+  mounted() {
+    axios.get('http://127.0.0.1:8000/api/imgs/').then(response => (this.imgs = response.data))
   },
   components: {},
 };
