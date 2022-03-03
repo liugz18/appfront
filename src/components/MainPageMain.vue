@@ -9,7 +9,7 @@
     <el-row v-for="(img, idx) in imgs" :gutter="20" :key="idx">
       <el-col :span="20">
         <el-card shadow="hover">
-          <img :src="'http://127.0.0.1:8000'+img.imgpath" />
+          <img :src="proxy.$backend+img.imgpath" />
         </el-card>
       </el-col>
     </el-row>
@@ -21,7 +21,7 @@
 
 
 <script>
-import axios from 'axios'
+import {getCurrentInstance} from "vue";
 export default {
   name: "MainPageMain",
   data() {
@@ -39,8 +39,9 @@ export default {
     };
   },
   mounted() {
-    axios.get('http://127.0.0.1:8000/api/imgs/').then(response => (this.imgs = response.data))
-  },
+    const { proxy } = getCurrentInstance() 
+    this.proxy = proxy
+    proxy.$axios.get(proxy.$backend +'/imgs/').then(response => (this.imgs = response.data))  },
   components: {},
 };
 </script>

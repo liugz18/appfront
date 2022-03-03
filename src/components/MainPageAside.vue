@@ -27,9 +27,9 @@
                 </el-sub-menu>
 
                 <router-link to="/RunPage">
-                    <el-menu-item v-for="item in notSweep" :index="item.path" :key="item.path">
-                        <i :class=" 'el-icon-' + item.name "></i>
-                        <span>{{item.label}}</span>
+                    <el-menu-item v-for="item in notSweep" :index="item.key" :key="item.key">
+                        <i :class=" 'el-icon-' + item.key "></i>
+                        <span>{{item.key}}</span>
                     </el-menu-item>
                 </router-link>
 
@@ -46,6 +46,7 @@
 
 <script>
 import NewRunDrawer from './NewRunDrawer.vue'
+import {getCurrentInstance} from "vue";
   export default {
     components: {NewRunDrawer},
     data() {
@@ -90,6 +91,10 @@ import NewRunDrawer from './NewRunDrawer.vue'
                 },
             ],
         }
+    },
+    mounted() {
+    const { proxy } = getCurrentInstance() 
+    proxy.$axios.get(proxy.$backend +'/runs/').then(response => (this.menu = response.data))
     },
     methods: {
       handleOpen(key, keyPath) {

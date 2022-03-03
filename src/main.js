@@ -4,6 +4,7 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from '../router'
 import VideoPlayer from 'vue-video-player/src'
+import axios from 'axios'
 
 
 import 'vue-video-player/src/custom-theme.css'
@@ -16,4 +17,6 @@ const app = createApp(App)
 app.use(ElementUI)
 app.use(router)
 app.use(VideoPlayer)
+app.config.globalProperties.$axios = axios
+app.config.globalProperties.$backend = 'http://127.0.0.1:8000'
 app.mount('#app')
