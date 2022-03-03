@@ -8,15 +8,15 @@
         </router-link> 
     </el-row>
     <el-row >
-        <el-tabs :tab-position="tabPosition" stretch="true" style="width:100%">
+        <el-tabs :tab-position="tabPosition" stretch="true" style="width:100%" v-if="RunMeta">
             <el-tab-pane label="Info">
                 <run-page-info></run-page-info>
             </el-tab-pane>
             <el-tab-pane label="Graphs">
                 <run-page-graphs></run-page-graphs>
             </el-tab-pane>
-            <el-tab-pane label="Videos">
-                <run-page-videos></run-page-videos>
+            <el-tab-pane label="Videos" v-if="RunMeta.videopath">
+                <run-page-videos :VideoPath="proxy.$backend + RunMeta.videopath"></run-page-videos>
             </el-tab-pane>
             <el-tab-pane label="Logs">
                 <run-page-logs></run-page-logs>
@@ -32,12 +32,23 @@ import RunPageLogs from './RunPageLogs.vue'
 import RunPageInfo from './RunPageInfo.vue'
 import RunPageVideos from './RunPageVideos.vue'
 import RunPageGraphs from './RunPageGraphs.vue'
+import {getCurrentInstance} from "vue";
   export default {
     data() {
+      const { proxy } = getCurrentInstance() 
       return {
+        proxy,
+        RunMeta: [],
         tabPosition: 'left',
       }
     },
-    components: {Back, RunPageLogs, RunPageInfo, RunPageVideos, RunPageGraphs}
+    props:{
+            RunName:String
+        },
+    mounted() {
+        this.proxy.$axios.get(this.proxy.$backend +'/runs/'+this.RunName).then(response => (this.RunMeta = response.data[0]))//))  console.log(response.data[0])
+    },    
+    components: {Back, RunPageLogs, RunPageInfo, RunPageVideos, RunPageGraphs},
+
   }
 </script>

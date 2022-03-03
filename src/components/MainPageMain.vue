@@ -25,6 +25,7 @@ import {getCurrentInstance} from "vue";
 export default {
   name: "MainPageMain",
   data() {
+    const { proxy } = getCurrentInstance() 
     return {
       // imgs: [
       //   { imgUrl: "http://127.0.0.1:8000/media/plot-ARs.png" },
@@ -35,13 +36,14 @@ export default {
       //   { imgUrl: require("../assets/FRED_Quick_Start_figure6.png") },
       //   { imgUrl: require("../assets/FRED_Quick_Start_figure7.png") },
       // ],
+      proxy,
       imgs: []
     };
   },
   mounted() {
-    const { proxy } = getCurrentInstance() 
-    this.proxy = proxy
-    proxy.$axios.get(proxy.$backend +'/imgs/').then(response => (this.imgs = response.data))  },
+    
+    this.proxy.$axios.get(this.proxy.$backend +'/imgs/').then(response => (this.imgs = response.data))  
+    },
   components: {},
 };
 </script>

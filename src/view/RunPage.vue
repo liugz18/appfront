@@ -2,7 +2,7 @@
     <el-container>
         <el-header>Run-Header</el-header>
         <el-container>
-            <run-page-aside></run-page-aside>
+            <run-page-aside :RunName="$route.params.RunName"></run-page-aside>
         </el-container>
     </el-container>
 </template> 
@@ -14,6 +14,9 @@ export default {
   components: { RunPageAside },
   name: 'RunPage',
   props: {
+  },
+  mounted () {
+    console.log('RunPage', this.$route.params)
   }
 }
 </script>

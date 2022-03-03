@@ -6,7 +6,7 @@ import RunPage from '../src/view/RunPage.vue'
 
 const routes = [
     { path: '/', component: MainPage },
-    { path: '/RunPage', component: RunPage },
+    { path: '/RunPage/:RunName', component: RunPage, name: RunPage },
   ]
 
 const router = createRouter({

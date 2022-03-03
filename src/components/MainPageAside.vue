@@ -26,12 +26,14 @@
                     </router-link>
                 </el-sub-menu>
 
-                <router-link to="/RunPage">
-                    <el-menu-item v-for="item in notSweep" :index="item.key" :key="item.key">
+                <!-- <router-link to="/RunPage"> -->
+                    <el-menu-item v-for="item in notSweep" :index="item.key" :key="item.key" @click="tolink(item.key)">
                         <i :class=" 'el-icon-' + item.key "></i>
+                        <router-link :to="'/RunPage/' + item.key"> 
                         <span>{{item.key}}</span>
+                        </router-link>
                     </el-menu-item>
-                </router-link>
+                <!-- </router-link> -->
 
                 <el-menu-item :index="plus" @click="drawer = true">
                     <i :class="plus"></i>
@@ -103,6 +105,9 @@ import {getCurrentInstance} from "vue";
       handleClose(key, keyPath) {
         console.log(key, keyPath)
       },
+      tolink(run_name) {
+          this.$router.push({name:'RunPage', params:{RunName:run_name}})
+      }
     },
     computed: {
         notSweep() {
