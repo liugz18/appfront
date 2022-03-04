@@ -16,7 +16,6 @@ export default {
   props: {
   },
   mounted () {
-    console.log('RunPage', this.$route.params)
   }
 }
 </script>

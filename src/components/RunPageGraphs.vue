@@ -1,72 +1,44 @@
 <template>
     <el-scrollbar ref="scrollbar" height="800px" style="width:100%"  always @scroll="scroll">
-        <el-row :gutter="30">
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl">
-                </el-card>
-            </el-col>
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl2">
-                </el-card>
-            </el-col>
-        </el-row>
-        <el-row :gutter="30">
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl3">
-                </el-card>
-            </el-col>
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl4">
-                </el-card>
-            </el-col>
-        </el-row>
-        <el-row :gutter="30">
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl5">
-                </el-card>
-            </el-col>
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl6">
-                </el-card>
-            </el-col>
-        </el-row>
-        <el-row :gutter="30">
-            <el-col :span="10">
-                <el-card shadow="hover">
-                    <img :src="imgUrl7">
-                </el-card>
-            </el-col>
 
-        </el-row>
+        <el-space
+        fill
+        wrap
+        :fillRatio="fillRatio"
+        :direction="direction"
+        style=" width: 100%"
+        >
+        <el-card v-for="(img, idx) in imgs" :key=idx shadow="hover">
+            <img :src="proxy.$backend + img.imgpath">
+        </el-card>
+        </el-space>
+
     </el-scrollbar>
     
 </template> 
 
 
 <script>
+import {getCurrentInstance} from "vue";
     export default {
         name : 'RunPageGraphs',
-        data () {
+        props: {
+            RunName:String
+        },
+        data () {      
+            const { proxy } = getCurrentInstance() 
             return {
-                imgUrl:require("../assets/plot-S-E-I-R.png"),
-                imgUrl2:require("../assets/plot-Cs.png"),
-                imgUrl3:require("../assets/plot-ARs.png"),
-                imgUrl4:require("../assets/plot-Is.png"),
-                imgUrl5:require("../assets/plot-M.png"),
-                imgUrl6:require("../assets/plot-N.png"),
-                imgUrl7:require("../assets/plot-P.png"),
-                imgUrl8:require("../assets/plot-S.png"),
+                direction: 'horizontal', fillRatio: 30,
+                imgs:[],
+                proxy,
             }
         },
-        components :{
-            
-        }
+        components :{ 
+        },
+        mounted() {
+        
+        this.proxy.$axios.get(this.proxy.$backend +'/imgs/'+this.RunName).then(response => (this.imgs = response.data))//))  console.log(response.data[0])
+        },   
     }
 </script>
 <style>

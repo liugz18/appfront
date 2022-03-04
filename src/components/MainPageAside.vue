@@ -29,9 +29,7 @@
                 <router-link v-for="item in notSweep" :key="item.key" :to="'/RunPage/' + item.key">
                     <el-menu-item  :index="item.key" >
                         <i :class=" 'el-icon-' + item.key "></i>
-                        <!-- <router-link :to="'/RunPage/' + item.key">  -->
                         <span>{{item.key}}</span>
-                        <!-- </router-link> -->
                     </el-menu-item>
                 </router-link>
 

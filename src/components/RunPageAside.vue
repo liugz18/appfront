@@ -12,14 +12,14 @@
             <el-tab-pane label="Info">
                 <run-page-info></run-page-info>
             </el-tab-pane>
-            <el-tab-pane label="Graphs">
-                <run-page-graphs></run-page-graphs>
+            <el-tab-pane label="Graphs" v-if="RunName">
+                <run-page-graphs :RunName="RunName"></run-page-graphs>
             </el-tab-pane>
             <el-tab-pane label="Videos" v-if="RunMeta.videopath">
                 <run-page-videos :VideoPath="proxy.$backend + RunMeta.videopath"></run-page-videos>
             </el-tab-pane>
-            <el-tab-pane label="Logs">
-                <run-page-logs></run-page-logs>
+            <el-tab-pane label="Logs" v-if="RunMeta.logpath">
+                <run-page-logs :LogPath="proxy.$backend + RunMeta.logpath"></run-page-logs>
             </el-tab-pane>
         </el-tabs>
     </el-row>
