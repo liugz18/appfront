@@ -7,10 +7,10 @@
             </el-button>  
         </router-link> 
     </el-row>
-    <el-row >
+    <el-row v-if="RunName">
         <el-tabs :tab-position="tabPosition" stretch="true" style="width:100%" v-if="RunMeta">
-            <el-tab-pane label="Info">
-                <run-page-info></run-page-info>
+            <el-tab-pane label="Info" v-if="RunMeta.logpath">
+                <run-page-info :RunName="RunName" :RunMeta="RunMeta"></run-page-info>
             </el-tab-pane>
             <el-tab-pane label="Graphs" v-if="RunName">
                 <run-page-graphs :RunName="RunName"></run-page-graphs>

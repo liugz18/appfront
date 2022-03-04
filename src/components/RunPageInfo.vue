@@ -18,53 +18,23 @@ export default {
     components: {},
     name: 'RunPageInfo',
     props: {
+      RunName:String,
+      RunMeta:Array
     },
     data() {
-
+      
       return {
         MetaData: [
-          {
-            key: 'Date',
-            value: 'Tue Jan 25 12:29:11 CST 2022',
-          },
-          {
-            key: 'Density',
-            value: '609.347500',
-          },
-          {
-            key: 'Finished',
-            value: 'Tue Jan 25 12:31:03 2022',
-          },
-          {
-            key: 'FIPS',
-            value: '42003',
-          },
-          {
-            key: 'FIPS',
-            value: '42003',
-          },
-          {
-            key: 'KEY',
-            value: 'stay___60',
-          },
-          {
-            key: 'Popsize',
-            value: '1218695',
-          },
-          {
-            key: 'Population',
-            value: '$FRED_HOME/populations/2010_ver1_42003',
-          },
-          {
-            key: 'User',
-            value: 'liugz18',
-          },
-          {
-            key: 'Where',
-            value: 'LAPTOP-O8O79RTP',
-          },
         ],
       }
     },
+    mounted() {
+      this.MetaData.push({key: "RunName", value:this.RunName})
+      for (var key in this.RunMeta) {
+        var item = this.RunMeta[key];
+        this.MetaData.push({key: key, value:item})
+}
+      
+    }
 }
 </script>
