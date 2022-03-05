@@ -29,7 +29,6 @@ export default {
       }
     },
     mounted() {
-      this.MetaData.push({key: "RunName", value:this.RunName})
       for (var key in this.RunMeta) {
         var item = this.RunMeta[key];
         this.MetaData.push({key: key, value:item})

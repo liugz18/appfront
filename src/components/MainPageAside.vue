@@ -12,16 +12,16 @@
             el-menu-border-color="#545c64"
             >
                 <h3>Runs</h3>
-                <el-sub-menu v-for="item in isSweep" :index="item.path" :key="item.path">
+                <el-sub-menu v-for="item in isSweep" :index="item.key" :key="item.key">
                     <template #title>
-                    <i :class=" 'el-icon-' + item.name "></i>
-                    <span>{{item.label}}</span>
+                    <i :class=" 'el-icon-' + item.key "></i>
+                    <span>{{item.key}}</span>
                     </template>
 
-                    <router-link to="/RunPage">
-                        <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path">
-                        <i :class=" 'el-icon-' + child.name "></i>
-                        <span>{{child.label}}</span>
+                    <router-link v-for="child in item.children" :key="child.key" :to="'/RunPage/' + child.key">
+                        <el-menu-item :index="child.key" >
+                        <i :class=" 'el-icon-' + child.key "></i>
+                        <span>{{child.key}}</span>
                         </el-menu-item>
                     </router-link>
                 </el-sub-menu>
