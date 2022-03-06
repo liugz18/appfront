@@ -5,6 +5,7 @@
     style="width: 100%"
     always
     @scroll="scroll"
+     v-if="done"
   >
     <el-row v-for="(img, idx) in imgs" :gutter="20" :key="idx">
       <el-col :span="20">
@@ -13,17 +14,38 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-button type="primary"
+    <el-button type="primary"  @click="dialogFormVisible = true"
       >New Graph +<i class="el-icon-upload el-icon-right"></i
     ></el-button>
+    <add-graph-dialog ref="confirmRef" v-model="dialogFormVisible" ></add-graph-dialog>
   </el-scrollbar>
 </template> 
 
 
 <script>
-import {getCurrentInstance} from "vue";
+import {getCurrentInstance, ref} from "vue";
+import AddGraphDialog from './AddGraphDialog.vue'
 export default {
   name: "MainPageMain",
+  setup () {
+    // 拿到confirm的dom
+    const confirmRef = ref(null)
+    // 唤起confirm
+    function showConfirm () {
+      confirmRef.value.show()
+    }
+    // 点击确认按钮后的事件处理
+    function confirm () {
+      // 事件处理完后记得关闭confirm组件
+      confirmRef.value.hide()
+    }
+
+    return {
+      confirmRef,
+      showConfirm,
+      confirm
+    }
+  },
   data() {
     const { proxy } = getCurrentInstance() 
     return {
@@ -36,15 +58,18 @@ export default {
       //   { imgUrl: require("../assets/FRED_Quick_Start_figure6.png") },
       //   { imgUrl: require("../assets/FRED_Quick_Start_figure7.png") },
       // ],
+      dialogFormVisible: false,
       proxy,
-      imgs: []
+      imgs: [],
+      done: false,
     };
   },
   mounted() {
     
     this.proxy.$axios.get(this.proxy.$backend +'/imgs/').then(response => (this.imgs = response.data))  
+    this.done = true
     },
-  components: {},
+  components: {AddGraphDialog},
 };
 </script>
 <style>
