@@ -11,6 +11,7 @@
           placeholder="Please select"
           style="width: 400px"
           multiple
+          clearable 
         />
       </el-form-item>
       <el-form-item label="Variables" :label-width="formLabelWidth">
@@ -22,6 +23,7 @@
           placeholder="Please select"
           style="width: 400px"
           multiple
+          clearable 
         />
       </el-form-item>
     </el-form>
@@ -75,7 +77,15 @@ export default {
   }, 
   methods: {
     confirm() {
-      console.log(this.value);
+      if (this.value.length!=0 && this.value2.length!=0) {
+        let graph_property = [this.value, this.value2]
+      this.proxy.$axios.post(this.proxy.$backend +'/addgraph/', graph_property).then(response => (console.log(response)))
+        console.log(graph_property);
+      }
+      else{
+        console.log("Please specify properties for graph to add!");
+      }
+      // 
     },
     prepare() {
       for (var key in this.runs_listed) {

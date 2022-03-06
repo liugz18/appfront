@@ -7,6 +7,10 @@
     @scroll="scroll"
      v-if="done"
   >
+      <el-button type="primary"  @click="dialogFormVisible = true"
+      >New Graph +<i class="el-icon-upload el-icon-right"></i
+    ></el-button>
+      <add-graph-dialog ref="confirmRef" v-model="dialogFormVisible" ></add-graph-dialog>
     <el-row v-for="(img, idx) in imgs" :gutter="20" :key="idx">
       <el-col :span="20">
         <el-card shadow="hover">
@@ -14,10 +18,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-button type="primary"  @click="dialogFormVisible = true"
-      >New Graph +<i class="el-icon-upload el-icon-right"></i
-    ></el-button>
-    <add-graph-dialog ref="confirmRef" v-model="dialogFormVisible" ></add-graph-dialog>
+    
   </el-scrollbar>
 </template> 
 
