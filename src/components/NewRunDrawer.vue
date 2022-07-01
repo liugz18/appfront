@@ -51,9 +51,9 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="School Closure Policies">
-          <el-radio-group v-model="form.closure_policy" >
-            <el-radio label="none"></el-radio>
-            <el-radio label="global"></el-radio>
+          <el-radio-group v-model="form.school_closure_policy" >
+            <el-radio label="none" model-value="none"></el-radio>
+            <el-radio label="global" model-value="global"></el-radio>
             <el-radio label="individual"></el-radio>
           </el-radio-group>
         </el-form-item>
@@ -62,7 +62,7 @@
           :label-width="formLabelWidth"
         >
           <el-input-number
-            v-model="form.closure_duration"
+            v-model="form.school_closure_duration"
             @change="handleChange"
             :min="1"
             :max="100"
@@ -111,7 +111,7 @@
         <!-- <el-button @click="cancelForm">Cancel</el-button> -->
         <el-button
           type="primary"
-          @click="logger"
+          @click="confirm"
           :loading="loading"
           >{{ loading ? "Submitting ..." : "Submit" }}</el-button
         >
@@ -121,6 +121,7 @@
 </template>
 
 <script>
+import {getCurrentInstance} from "vue";
 export default {
   name: "NewRunDrawer",
   props: {
@@ -131,17 +132,19 @@ export default {
     },
   },
   data() {
+    const { proxy } = getCurrentInstance() 
     return {
       // 是否打开
       drawer: false,
       loading: false,
+      proxy,
       form: {
         key: "",
         fips: "",
         days: 100,
         influenza_transmissibility: 1.0,
-        closure_policy: "none",
-        closure_duration: 1,
+        school_closure_policy: "none",
+        school_closure_duration: 1,
         sick_day_prob: 0.5,
         school_summer_schedule: 0,
         office_size: 50,
@@ -162,7 +165,19 @@ export default {
     },
     logger() {
         console.log(this.form)
-    }
+    },
+    confirm() {
+      // if (this.value.length!=0 && this.value2.length!=0) {
+      let run_property = this.form
+      console.log(run_property)
+      this.proxy.$axios.post(this.proxy.$backend +'/addrun/', run_property).then(response => (console.log(response)))
+        console.log(run_property);
+      // }
+      // else{
+      //   console.log("Please specify properties for graph to add!");
+      // }
+      // 
+    },
   },
 };
 </script>
