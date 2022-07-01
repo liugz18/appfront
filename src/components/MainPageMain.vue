@@ -7,17 +7,21 @@
     @scroll="scroll"
      v-if="done"
   >
+      
+    <!-- <el-row :gutter="20" >
+      <el-col :span="22"> -->
+        <el-card v-for="(img, idx) in imgs" :key="idx" shadow="hover" :fillRatio=30>
+          <img :src="proxy.$backend+img.imgpath" />
+        </el-card>
+      <el-affix position="bottom" :offset="20">
       <el-button type="primary"  @click="dialogFormVisible = true"
       >New Graph +<i class="el-icon-upload el-icon-right"></i
     ></el-button>
+      
       <add-graph-dialog ref="confirmRef" v-model="dialogFormVisible" ></add-graph-dialog>
-    <el-row v-for="(img, idx) in imgs" :gutter="20" :key="idx">
-      <el-col :span="20">
-        <el-card shadow="hover">
-          <img :src="proxy.$backend+img.imgpath" />
-        </el-card>
-      </el-col>
-    </el-row>
+      </el-affix>
+      <!-- </el-col>
+    </el-row> -->
     
   </el-scrollbar>
 </template> 
