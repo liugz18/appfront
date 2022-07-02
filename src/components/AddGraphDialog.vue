@@ -30,7 +30,7 @@
     <template #footer>
       <span class="dialog-footer">
         <!-- <el-button @click="hide">Cancel</el-button> -->
-        <el-button type="primary" @click="confirm">Confirm</el-button>
+        <el-button type="primary" @click="open">Confirm</el-button>
       </span>
     </template>
   </el-dialog>
@@ -84,7 +84,7 @@ export default {
         location.reload()
       }
       else{
-        console.log("Please specify properties for graph to add!");
+        this.$message({type: 'info', message: "Please specify properties for graph to add!"});
       }
       // 
     },
@@ -94,6 +94,21 @@ export default {
         this.options.push({value: item, label: item})
     }
   },
+  open() {
+        this.$alert('Create New Graph? It may take few seconds, refresh later', 'Notice', {
+          confirmButtonText: 'Create!',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+            if (action == 'confirm') {
+              this.confirm()
+            } 
+            
+          }
+        });
+      }
 },
 }
 </script>

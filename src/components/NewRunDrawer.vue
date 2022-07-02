@@ -19,8 +19,9 @@
             placeholder="Please select simulation area"
           >
             <el-option label="Allegheny County, PA" value=42003></el-option>
-            <!-- <el-option label="Akhiok County, CA" value="beijing"></el-option>
-            <el-option label="Bethel County, CA" value="bejing"></el-option>
+            <el-option label="Indiana, PA" value="42063"></el-option>
+            <el-option label="Chester County, PA" value="42029"></el-option>
+           <!--  <el-option label="Bethel County, CA" value="bejing"></el-option>
             <el-option label="Hillsborough County, FL" value="bjing"></el-option>
             <el-option label="Touisset County, MA" value="beijg"></el-option> -->
           </el-select>
@@ -111,12 +112,13 @@
         <!-- <el-button @click="cancelForm">Cancel</el-button> -->
         <el-button
           type="primary"
-          @click="confirm"
+          @click="open"
           :loading="loading"
           >{{ loading ? "Submitting ..." : "Submit" }}</el-button
         >
       </div>
     </div>
+    <!-- <el-button type="text" @click="open">Click to open the Message Box</el-button> -->
   </el-drawer>
 </template>
 
@@ -179,6 +181,21 @@ export default {
       // }
       // 
     },
+    open() {
+        this.$alert('Submit job to the server? It may take few minutes, refresh later', 'Notice', {
+          confirmButtonText: 'Submit!',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+            if (action == 'confirm') {
+              this.confirm()
+            } 
+            
+          }
+        });
+      }
   },
 };
 </script>
