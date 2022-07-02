@@ -81,6 +81,7 @@ export default {
         let graph_property = [this.value, this.value2]
       this.proxy.$axios.post(this.proxy.$backend +'/addgraph/', graph_property).then(response => (console.log(response)))
         console.log(graph_property);
+        location.reload()
       }
       else{
         console.log("Please specify properties for graph to add!");

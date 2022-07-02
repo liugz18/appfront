@@ -33,14 +33,19 @@
                     </el-menu-item>
                 </router-link>
 
-                <el-menu-item :index="plus" @click="drawer = true">
+                
+                <!-- <el-menu-item :index="plus" @click="drawer = true">
                     <i :class="plus"></i>
                     <span>New Run +</span>
-                </el-menu-item>
+                </el-menu-item> -->
+
             </el-menu>
         <!-- </el-col>
     
     </el-row>  -->
+    <el-affix position="bottom" :offset="20" style="float:right">
+        <el-button type="primary" @click="drawer = true" circle>+</el-button>                
+    </el-affix>
     <new-run-drawer v-model="drawer"></new-run-drawer>
 </template>
 

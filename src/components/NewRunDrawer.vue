@@ -172,6 +172,7 @@ export default {
       console.log(run_property)
       this.proxy.$axios.post(this.proxy.$backend +'/addrun/', run_property).then(response => (console.log(response)))
         console.log(run_property);
+      location.reload()
       // }
       // else{
       //   console.log("Please specify properties for graph to add!");
