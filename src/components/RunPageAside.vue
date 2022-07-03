@@ -8,9 +8,9 @@
         </router-link> 
     </el-row>
     <el-row v-if="RunName">
-        <el-tabs :tab-position="tabPosition" stretch="true" style="width:100%" v-if="RunMeta">
+        <el-tabs :tab-position="tabPosition" stretch="true" style="width:100%" v-if="RunConfig['fips']">
             <el-tab-pane label="Info" v-if="RunMeta.logpath">
-                <run-page-info :RunName="RunName" :RunMeta="RunMeta"></run-page-info>
+                <run-page-info :RunName="RunName" :RunMeta="RunMeta" :RunConfig="RunConfig"></run-page-info>
             </el-tab-pane>
             <el-tab-pane label="Graphs" v-if="RunName">
                 <run-page-graphs :RunName="RunName"></run-page-graphs>
@@ -39,7 +39,9 @@ import {getCurrentInstance} from "vue";
       return {
         proxy,
         RunMeta: [],
+        RunConfig: [],
         tabPosition: 'left',
+        done: false,
       }
     },
     props:{
@@ -47,6 +49,8 @@ import {getCurrentInstance} from "vue";
         },
     mounted() {
         this.proxy.$axios.get(this.proxy.$backend +'/runs/'+this.RunName).then(response => (this.RunMeta = response.data[0]))//))  console.log(response.data[0])
+        this.proxy.$axios.get(this.proxy.$backend +'/runs/get_config/'+this.RunName).then(response => (this.RunConfig = response.data))//))  console.log(response.data[0])
+        this.done = true
     },    
     components: {Back, RunPageLogs, RunPageInfo, RunPageVideos, RunPageGraphs},
 

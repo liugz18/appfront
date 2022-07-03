@@ -22,7 +22,14 @@
           >
             <el-option label="Allegheny County, PA" value=42003></el-option>
             <el-option label="Indiana, PA" value="42063"></el-option>
-            <el-option label="Chester County, PA" value="42029"></el-option>
+            <el-option label="Westmoreland County, PA" value="42129"></el-option>
+            <el-option label="Bedford County, PA" value="42009"></el-option>
+            <el-option label="Blair County, PA" value="42013"></el-option>
+            <el-option label="Bucks County, PA" value="42017"></el-option>
+            <el-option label="Cambria County, PA" value="42021"></el-option>
+            <el-option label="Fayette County, PA" value="42051"></el-option>
+            <el-option label="Jefferson County, PA" value="42065"></el-option>
+            <el-option label="Lebanon County, PA" value="42075"></el-option>
            <!--  <el-option label="Bethel County, CA" value="bejing"></el-option>
             <el-option label="Hillsborough County, FL" value="bjing"></el-option>
             <el-option label="Touisset County, MA" value="beijg"></el-option> -->
@@ -77,8 +84,15 @@
             placeholder="Please select simulation area"
           >
             <el-option label="Allegheny County, PA" value=42003></el-option>
-            <el-option label="Indiana, PA" value="42063"></el-option>
-            <el-option label="Chester County, PA" value="42029"></el-option>
+            <el-option label="Indiana County, PA" value="42063"></el-option>
+            <el-option label="Westmoreland County, PA" value="42129"></el-option>
+            <el-option label="Bedford County, PA" value="42009"></el-option>
+            <el-option label="Blair County, PA" value="42013"></el-option>
+            <el-option label="Bucks County, PA" value="42017"></el-option>
+            <el-option label="Cambria County, PA" value="42021"></el-option>
+            <el-option label="Fayette County, PA" value="42051"></el-option>
+            <el-option label="Jefferson County, PA" value="42065"></el-option>
+            <el-option label="Lebanon County, PA" value="42075"></el-option>
            <!--  <el-option label="Bethel County, CA" value="bejing"></el-option>
             <el-option label="Hillsborough County, FL" value="bjing"></el-option>
             <el-option label="Touisset County, MA" value="beijg"></el-option> -->
@@ -179,7 +193,14 @@
           >
             <el-option label="Allegheny County, PA" value=42003></el-option>
             <el-option label="Indiana, PA" value="42063"></el-option>
-            <el-option label="Chester County, PA" value="42029"></el-option>
+            <el-option label="Westmoreland County, PA" value="42129"></el-option>
+            <el-option label="Bedford County, PA" value="42009"></el-option>
+            <el-option label="Blair County, PA" value="42013"></el-option>
+            <el-option label="Bucks County, PA" value="42017"></el-option>
+            <el-option label="Cambria County, PA" value="42021"></el-option>
+            <el-option label="Fayette County, PA" value="42051"></el-option>
+            <el-option label="Jefferson County, PA" value="42065"></el-option>
+            <el-option label="Lebanon County, PA" value="42075"></el-option>
            <!--  <el-option label="Bethel County, CA" value="bejing"></el-option>
             <el-option label="Hillsborough County, FL" value="bjing"></el-option>
             <el-option label="Touisset County, MA" value="beijg"></el-option> -->
